@@ -26,7 +26,11 @@ const limiter = rateLimit({
 // Global middleware
 app.use(
   cors({
-    origin: ['https://ecommerce-fe-steel.vercel.app'],
+    origin: [
+      'https://ecommerce-fe-steel.vercel.app',
+      'https://ecommerce-fe-git-main-mercyikpe.vercel.app',
+      'https://ecommerce-rcmz85vvj-mercyikpe.vercel.app',
+    ],
     // origin: ['http://localhost:3000'],
     credentials: true,
   })
