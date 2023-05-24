@@ -10,8 +10,8 @@ const storage = multer.diskStorage({
     file: Express.Multer.File,
     cb: DestinationCallback
   ) {
-    // cb(null, 'public/images/products')
-    cb(null, 'images/products')
+    cb(null, 'public/images/products')
+    // cb(null, 'images/products')
   },
   filename: function (
     req: Request,
