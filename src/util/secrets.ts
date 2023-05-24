@@ -25,11 +25,6 @@ export const MONGODB_URI = process.env['MONGODB_URI'] as string
 //   prod ? process.env['MONGODB_URI'] : process.env['MONGODB_URI_LOCAL']
 // ) as string
 
-if (!JWT_SECRET) {
-  logger.error('No client secret. Set JWT_SECRET environment variable.')
-  process.exit(1)
-}
-
 if (!MONGODB_URI) {
   if (prod) {
     logger.error(
