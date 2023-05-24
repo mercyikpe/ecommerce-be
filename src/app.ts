@@ -12,6 +12,7 @@ import categoryRoutes from './routers/categoryRoutes'
 
 import apiErrorHandler from './middlewares/apiErrorHandler'
 import dev from './config'
+import path from 'path'
 
 dotenv.config({ path: '.env' })
 const app = express()
@@ -23,21 +24,23 @@ const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
 })
+
+const origin = process.env.NODE_ENV === "development" ? ['http://localhost:3000'] : [
+  'https://ecommerce-fe-steel.vercel.app',
+  'https://ecommerce-fe-git-main-mercyikpe.vercel.app',
+  'https://ecommerce-rcmz85vvj-mercyikpe.vercel.app',
+]
+
 // Global middleware
 app.use(
   cors({
-    origin: [
-      'https://ecommerce-fe-steel.vercel.app',
-      'https://ecommerce-fe-git-main-mercyikpe.vercel.app',
-      'https://ecommerce-rcmz85vvj-mercyikpe.vercel.app',
-    ],
-    // origin: ['http://localhost:3000'],
+    origin,
     credentials: true,
   })
 )
 
 app.use(cookieParser())
-app.use('/public', express.static('public'))
+app.use('/public', express.static(path.resolve('public')))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
