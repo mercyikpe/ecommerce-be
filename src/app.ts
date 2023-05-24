@@ -37,7 +37,7 @@ app.use(
 )
 
 app.use(cookieParser())
-app.use('/public', express.static('public'))
+app.use('/images', express.static('images'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
